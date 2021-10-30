@@ -38,4 +38,4 @@ jobs:
           context: .
           file: ./Source/Main/Dockerfile
           push: true
-          tags: 'einari/dyslexia:$\{{ steps.release.outputs.version }}'
+          tags: 'einari/dyslexia:${{ steps.release.outputs.version }}'
