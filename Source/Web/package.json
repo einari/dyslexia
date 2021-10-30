@@ -1,0 +1,50 @@
+{
+    "name": "web",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "author": "Cratis",
+    "license": "MIT",
+    "scripts": {
+        "build": "webpack --mode=production",
+        "build:dev": "webpack --mode=development",
+        "start:dev": "webpack serve --mode=development --progress --hot",
+        "clean": "tsc -b --clean",
+        "lint": "eslint '**/*.{js,ts,tsx}' --quiet --fix",
+        "lint:ci": "eslint '**/*.{js,ts,tsx}' --quiet",
+        "ci": "yarn clean && yarn lint:ci && yarn build",
+        "up": "ncu \\!'@cratis/*'"
+    },
+    "dependencies": {
+        "@cratis/fluentui": "2.10.0",
+        "@cratis/react": "2.10.0",
+        "@cratis/fundamentals": "2.10.0",
+        "reflect-metadata": "^0.1.13"
+    },
+    "devDependencies": {
+        "@cratis/webpack": "2.10.0",
+        "@types/chai": "4.2.22",
+        "@types/chai-as-promised": "7.1.4",
+        "@types/mocha": "9.0.0",
+        "@types/sinon": "10.0.4",
+        "@types/sinon-chai": "3.2.5",
+        "@typescript-eslint/eslint-plugin": "5.0.0",
+        "@typescript-eslint/parser": "5.0.0",
+        "chai": "4.3.4",
+        "chai-as-promised": "7.1.1",
+        "eslint": "8.0.0",
+        "eslint-config-prettier": "8.3.0",
+        "eslint-plugin-header": "3.1.1",
+        "eslint-plugin-import": "2.25.1",
+        "eslint-plugin-jsdoc": "36.1.1",
+        "eslint-plugin-no-null": "1.0.2",
+        "eslint-plugin-prettier": "4.0.0",
+        "eslint-plugin-react": "7.26.1",
+        "mocha": "9.1.2",
+        "sinon": "11.1.2",
+        "sinon-chai": "3.7.0",
+        "ts-loader": "9.2.6",
+        "ts-node": "10.3.0",
+        "typescript": "4.4.3"        
+    }
+}
