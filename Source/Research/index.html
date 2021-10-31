@@ -108,79 +108,79 @@ https://stackoverflow.com/a/17479300
         function init() {
 
 
-            // var canvas = document.getElementById("mycanvas");
-            // gl = canvas.getContext("webgl");
+            var canvas = document.getElementById("mycanvas");
+            gl = canvas.getContext("webgl");
 
-            // var v = document.getElementById("vertex").firstChild.nodeValue;
-            // var f = document.getElementById("fragment").firstChild.nodeValue;
+            var v = document.getElementById("vertex").firstChild.nodeValue;
+            var f = document.getElementById("fragment").firstChild.nodeValue;
 
-            // var vs = gl.createShader(gl.VERTEX_SHADER);
-            // gl.shaderSource(vs, v);
-            // gl.compileShader(vs);
+            var vs = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vs, v);
+            gl.compileShader(vs);
 
-            // var fs = gl.createShader(gl.FRAGMENT_SHADER);
-            // gl.shaderSource(fs, f);
-            // gl.compileShader(fs);
+            var fs = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fs, f);
+            gl.compileShader(fs);
 
-            // program = gl.createProgram();
-            // gl.attachShader(program, vs);
-            // gl.attachShader(program, fs);
-            // gl.linkProgram(program);
+            program = gl.createProgram();
+            gl.attachShader(program, vs);
+            gl.attachShader(program, fs);
+            gl.linkProgram(program);
 
-            // if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
-            //     console.log(gl.getShaderInfoLog(vs));
+            if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS))
+                console.log(gl.getShaderInfoLog(vs));
 
-            // if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
-            //     console.log(gl.getShaderInfoLog(fs));
+            if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS))
+                console.log(gl.getShaderInfoLog(fs));
 
-            // if (!gl.getProgramParameter(program, gl.LINK_STATUS))
-            //     console.log(gl.getProgramInfoLog(program));
-
-
-            // vbuffer = gl.createBuffer();
-            // gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
-
-            // gl.useProgram(program);
-
-            // const dim = [512, 512];
-            // program.u_resolution = gl.getUniformLocation(program, "u_resolution");
-            // program.u_seed = gl.getUniformLocation(program, "u_seed");
-            // gl.uniform2fv(program.u_resolution, dim);
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS))
+                console.log(gl.getProgramInfoLog(program));
 
 
-            // var vertices = getVerticesFor(canvas);
-            // gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+            vbuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, vbuffer);
 
-            // itemSize = 2;
-            // numItems = vertices.length / itemSize;
+            gl.useProgram(program);
 
-            // program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
-            // gl.enableVertexAttribArray(program.aVertexPosition);
-            // gl.vertexAttribPointer(program.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
+            const dim = [512, 512];
+            program.u_resolution = gl.getUniformLocation(program, "u_resolution");
+            program.u_seed = gl.getUniformLocation(program, "u_seed");
+            gl.uniform2fv(program.u_resolution, dim);
 
-            // var framecounter = 0;
 
-            // const render = () => {
-            //     if (framecounter++ % 10 == 0) {
-            //         var seed = Array(4).fill().map(Math.random);
-            //         gl.uniform2fv(program.u_seed, seed);
-            //     }
+            var vertices = getVerticesFor(canvas);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
-            //     gl.clearColor(0, 0, 0, 0);
-            //     gl.clear(gl.COLOR_BUFFER_BIT);
-            //     gl.drawArrays(gl.TRIANGLES, 0, numItems);
+            itemSize = 2;
+            numItems = vertices.length / itemSize;
 
-            //     canvas.width = window.innerWidth;
-            //     canvas.height = window.innerHeight;
+            program.aVertexPosition = gl.getAttribLocation(program, "aVertexPosition");
+            gl.enableVertexAttribArray(program.aVertexPosition);
+            gl.vertexAttribPointer(program.aVertexPosition, itemSize, gl.FLOAT, false, 0, 0);
 
-            //     gl.viewport(0, 0, canvas.width, canvas.height);
-            //     var vertices = getVerticesFor(canvas);
-            //     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+            var framecounter = 0;
 
-            //     window.requestAnimationFrame(render);
-            // };
+            const render = () => {
+                if (framecounter++ % 10 == 0) {
+                    var seed = Array(4).fill().map(Math.random);
+                    gl.uniform2fv(program.u_seed, seed);
+                }
 
-            // window.requestAnimationFrame(render);
+                gl.clearColor(0, 0, 0, 0);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+                gl.drawArrays(gl.TRIANGLES, 0, numItems);
+
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                gl.viewport(0, 0, canvas.width, canvas.height);
+                var vertices = getVerticesFor(canvas);
+                gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+                window.requestAnimationFrame(render);
+            };
+
+            window.requestAnimationFrame(render);
 
 
 
