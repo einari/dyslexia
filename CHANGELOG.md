@@ -1,3 +1,10 @@
+# [v1.1.1] - 2021-10-31 [PR: #8](https://github.com/einari/dyslexia/pull/8)
+
+### Added
+
+- Automatic deploy to Azure Container Instances when publishing.
+
+
 # [v1.1.0] - 2021-10-31 [PR: #7](https://github.com/einari/dyslexia/pull/7)
 
 ### Added
