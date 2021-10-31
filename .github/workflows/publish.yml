@@ -39,3 +39,11 @@ jobs:
           file: ./Source/Main/Dockerfile
           push: true
           tags: 'einari/dyslexia:${{ steps.release.outputs.version }}'
+
+      - name: Login via Az module
+        uses: azure/login@v1.1
+        with:
+          creds: ${{  secrets.AZURE_CREDENTIALS }}
+      - name: Create / Update Azure Container instance with new image
+        run: |
+          az container create -g instances --name dyslexia --dns-name-label dyslexia --image einari/dyslexia:${{ steps.release.outputs.version }} --restart-policy OnFailure
