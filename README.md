@@ -3,7 +3,7 @@
 [![Build](https://github.com/einari/dyslexia/actions/workflows/build.yml/badge.svg)](https://github.com/einari/dyslexia/actions/workflows/build.yml)
 [![Publish](https://github.com/einari/dyslexia/actions/workflows/publish.yml/badge.svg)](https://github.com/einari/dyslexia/actions/workflows/publish.yml)
 
-This project aims at researching and possibly coming up with a new accessibility
+The goal of this project is researching and hopefully come up with a new accessibility
 option for people with dyslexia (reading disability). The project is based on
 the research described [here](https://onlinelibrary.wiley.com/doi/full/10.1002/brb3.2114).
 
