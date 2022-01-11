@@ -10,14 +10,14 @@
         "128": "icons/icon128x128.png"
     },
     "browser_action": {
-        "default_popup": "popup/popup.html"
+        "default_popup": "configuration/index.html"
     },
     "content_scripts": [
         {
             "matches": [
               "<all_urls>"
             ],
-            "js": ["lib/jquery.min.js","content-scripts/content.js"]
+            "js": ["browser/index.js"]
         }
     ],
     "web_accessible_resources": [
