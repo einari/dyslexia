@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import {
     IconButton,
@@ -11,6 +11,7 @@ import { default as styles } from './App.module.scss';
 import { Noise } from './Noise';
 
 export const App = () => {
+    const iframeRef = useRef<HTMLIFrameElement>(null);
     const [address, setAddress] = useState('');
     const [currentBrowserAddress, setCurrentBrowserAddress] = useState('https://db.no');
     const [millseconds, setMilliseconds] = useState(100);
@@ -26,6 +27,14 @@ export const App = () => {
     };
 
     const browserLoaded = (ev) => {
+    };
+
+    const forwardClick = (ev: MouseEvent) => {
+        if (iframeRef.current) {
+            const clickEvent = document.createEvent("MouseEvents");
+            clickEvent.initMouseEvent("click", true, true, iframeRef.current.contentWindow, 1, ev.x, ev.y, ev.clientX, ev.clientY, ev.ctrlKey, ev.altKey, ev.shiftKey, ev.metaKey, ev.buttons, ev.relatedTarget);
+            iframeRef.current.dispatchEvent(clickEvent);
+        }
     };
 
     return (
@@ -76,10 +85,11 @@ export const App = () => {
 
                 <Stack.Item grow={1}>
                     <iframe
+                        ref={iframeRef}
                         className={styles.browser}
                         onLoad={browserLoaded}
                         src={currentBrowserAddress} sandbox="" />
-                    <Noise milliseconds={millseconds} opacity={opacity} />
+                    <Noise milliseconds={millseconds} opacity={opacity} onClick={forwardClick} />
                 </Stack.Item>
             </Stack>
         </>

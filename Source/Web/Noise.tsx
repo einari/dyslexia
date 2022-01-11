@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, MouseEventHandler } from 'react';
 import { default as styles } from './Noise.module.scss';
 
 import { default as vertexShader } from './vertices.glsl';
@@ -7,6 +7,7 @@ import { default as fragmentShader } from './fragment.glsl';
 export interface NoiseProps {
     milliseconds: number;
     opacity: number;
+    onClick?: MouseEventHandler;
 }
 
 export const Noise = (props: NoiseProps) => {
@@ -80,7 +81,7 @@ export const Noise = (props: NoiseProps) => {
                 gl.clear(gl.COLOR_BUFFER_BIT);
                 gl.drawArrays(gl.TRIANGLES, 0, numItems);
 
-                canvas.width = canvas.parentElement.offsetWidth-16;
+                canvas.width = canvas.parentElement.offsetWidth - 16;
                 canvas.height = canvas.parentElement.offsetHeight;
                 canvas.style.top = `${canvas.parentElement.offsetTop}px`;
                 gl.viewport(0, 0, canvas.width, canvas.height);
@@ -98,6 +99,7 @@ export const Noise = (props: NoiseProps) => {
         <canvas
             ref={canvasRef}
             style={{ opacity: props.opacity }}
-            className={styles.noise} />
+            className={styles.noise}
+            onClick={props.onClick}/>
     );
 };
