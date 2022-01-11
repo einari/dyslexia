@@ -16,7 +16,7 @@ module.exports = (env, argv) => {
         config.output.sourceMapFilename = 'index.map';
         config.optimization.runtimeChunk = false;
         config.optimization.splitChunks = undefined;
-        config.output.path = path.resolve(process.cwd(), 'package/configuration');
+        config.output.path = path.resolve(process.cwd(), '../package/configuration');
         config.devServer.port = 9000;
         config.plugins[2].userOptions.publicPath = '';
     }, 'Dyslexia');

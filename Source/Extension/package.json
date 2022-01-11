@@ -6,7 +6,7 @@
     "author": "Cratis",
     "license": "MIT",
     "scripts": {
-        "build": "webpack --mode=production",
+        "build": "cd configuration && webpack --mode=production && cd .. && cd browser && tsc -b && cd ..",
         "build:dev": "webpack --mode=development",
         "start:dev": "webpack serve --mode=development --progress --hot",
         "clean": "tsc -b --clean",

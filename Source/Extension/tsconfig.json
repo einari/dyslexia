@@ -1,4 +1,11 @@
 {
     "extends": "../../tsconfig.json",
-    "references": []
+    "compilerOptions": {
+        "rootDir": "./browser",
+        "outDir": "./package/browser"
+    },
+    "references": [],
+    "exclude": [
+        "configuration/**"
+    ]
 }

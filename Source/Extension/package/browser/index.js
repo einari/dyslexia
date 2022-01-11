@@ -1,3 +1,3 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    //sendResponse({ fromcontent: "This message is from content.js" });
-});
+"use strict";
+alert('hello world');
+//# sourceMappingURL=index.js.map
