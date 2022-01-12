@@ -6,7 +6,9 @@
     "author": "Cratis",
     "license": "MIT",
     "scripts": {
-        "build": "cd configuration && webpack --mode=production && cd .. && cd browser && tsc -b && cd ..",
+        "build": "yarn build:configuration && yarn build:browser",
+        "build:configuration": "cd configuration && webpack --mode=development && cd ..",
+        "build:browser": "cd browser && webpack --mode=development && cd ..",
         "build:dev": "webpack --mode=development",
         "start:dev": "webpack serve --mode=development --progress --hot",
         "clean": "tsc -b --clean",
@@ -19,6 +21,7 @@
         "@cratis/fluentui": "3.4.0",
         "@cratis/fundamentals": "3.4.0",
         "@cratis/react": "3.4.0",
+        "@types/chrome": "^0.0.176",
         "reflect-metadata": "^0.1.13"
     },
     "devDependencies": {

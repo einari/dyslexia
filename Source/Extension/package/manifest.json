@@ -20,6 +20,9 @@
             "js": ["browser/index.js"]
         }
     ],
+    "permissions": [
+        "storage"
+    ],
     "web_accessible_resources": [
         "images/*.png"
     ]

@@ -3,14 +3,6 @@ const path = require('path');
 const webpack = require('@cratis/webpack/frontend');
 module.exports = (env, argv) => {
     return webpack(env, argv, '', config => {
-        config.module.rules.push({
-            test: /\.(glsl|vs|fs|vert|frag)$/,
-            exclude: /node_modules/,
-            use: [
-                'raw-loader',
-                'glslify-loader'
-            ]
-        });
         config.output.filename = 'index.js';
         config.output.publicPath = '';
         config.output.sourceMapFilename = 'index.map';

@@ -1,10 +1,19 @@
 import { Stack, Slider } from '@fluentui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { default as styles } from './App.module.scss';
 
 export const App = () => {
-    const [millseconds, setMilliseconds] = useState(100);
+    const [milliseconds, setMilliseconds] = useState(100);
     const [opacity, setOpacity] = useState(0.5);
+
+    useEffect(() => {
+        chrome.storage.sync.get(['milliseconds', 'opacity'], result => {
+            setMilliseconds(result.milliseconds);
+            setOpacity(result.opacity);
+        });
+
+        return () => { };
+    }, [])
 
     return (
         <>
@@ -14,20 +23,25 @@ export const App = () => {
                     min={20}
                     max={200}
                     step={10}
-                    defaultValue={100}
+                    value={milliseconds}
                     showValue
                     snapToStep
-                    onChange={(value) => setMilliseconds(value)} />
+                    onChange={(value) => {
+                        chrome.storage.sync.set({ milliseconds: value }, () => { });
+                        setMilliseconds(value);
+                    }} />
 
                 <Slider
                     label="Opacity"
                     min={0}
                     max={1}
                     step={0.1}
-                    defaultValue={0.5}
+                    value={opacity}
                     showValue
-                    onChange={(value) => setOpacity(value)} />
-
+                    onChange={(value) => {
+                        chrome.storage.sync.set({ opacity: value }, () => { });
+                        setOpacity(value);
+                    }} />
             </Stack>
         </>
     );
