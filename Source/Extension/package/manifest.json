@@ -1,7 +1,7 @@
 {
     "name": "SmartNoise",
     "version": "1.0.0.0",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "description": "",
     "icons": {
         "16": "icons/icon16x16.png",
@@ -9,7 +9,7 @@
         "64": "icons/icon64x64.png",
         "128": "icons/icon128x128.png"
     },
-    "browser_action": {
+    "action": {
         "default_popup": "configuration/index.html"
     },
     "content_scripts": [
@@ -23,7 +23,14 @@
     "permissions": [
         "storage"
     ],
-    "web_accessible_resources": [
-        "images/*.png"
-    ]
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "web_accessible_resources": [{
+        "resources": [
+            "images/*.png"
+        ],
+        "matches": [],
+        "extension_ids": []
+    }]
 }
