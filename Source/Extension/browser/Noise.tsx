@@ -92,8 +92,8 @@ export const Noise = () => {
 
     useEffect(() => {
         chrome.storage.sync.get(['milliseconds', 'opacity'], result => {
-            setMilliseconds(result.milliseconds);
-            setOpacity(result.opacity);
+            setMilliseconds(result.milliseconds || 60);
+            setOpacity(result.opacity || 0.3);
         });
 
         chrome.storage.onChanged.addListener(changes => {
@@ -115,6 +115,8 @@ export const Noise = () => {
                 opacity,
                 position: 'fixed',
                 top: '0px',
+                left: '0px',
+                pointerEvents: 'none',
                 width: '100%',
                 height: '100%',
                 zIndex: 1000
@@ -122,4 +124,3 @@ export const Noise = () => {
         />
     );
 };
-

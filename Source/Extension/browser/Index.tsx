@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import { Noise } from './Noise';
 
 const container = document.createElement('div');
+container.style['pointer-events'] = 'none';
 container.style.position = 'fixed';
 container.style.top = '0px';
 container.style.zIndex = '1000';
