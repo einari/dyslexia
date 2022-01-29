@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('@cratis/webpack/frontend');
 module.exports = (env, argv) => {
     return webpack(env, argv, '', config => {
+        config.entry = './index.ts';
         config.module.rules.push({
             test: /\.(glsl|vs|fs|vert|frag)$/,
             exclude: /node_modules/,
