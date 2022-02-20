@@ -23,6 +23,7 @@
         "@cratis/fluentui": "3.4.0",
         "@cratis/fundamentals": "3.4.0",
         "@cratis/react": "3.4.0",
+        "@microsoft/applicationinsights-web": "^2.7.3",
         "@types/chrome": "^0.0.176",
         "reflect-metadata": "^0.1.13"
     },
